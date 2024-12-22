@@ -1,4 +1,4 @@
-/* Reseta estilos básicos */
+
 body, h1, h2, p, ul, li, a {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body, h1, h2, p, ul, li, a {
   body {
     font-family: Arial, sans-serif;
     display: flex;
-    height: 100vh;
+    height: 170vh;
     background: linear-gradient(90deg, #fca0da, #FDBF82);
    
   
@@ -73,13 +73,13 @@ body, h1, h2, p, ul, li, a {
     background-color: #555;
   }
   
-  /* Conteúdo principal */
-  main {
+  /* Conteúdo principal*/
+  .mainHome {
     margin-left: 180px; 
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.742);
     overflow-y: auto;
-    height: 90%;
+  height: 70%;
    position: relative;
    top: 40px;
     width: 80%;
@@ -90,3 +90,216 @@ body, h1, h2, p, ul, li, a {
     
   }
   
+  /*formatando sobre*/
+.about{
+  display: flex;
+  height: 120vh;
+  align-items: center;
+
+  
+ flex-direction: column;
+ background-color: #ffe3f326;
+}
+.about h1{
+  margin-bottom: 20px;
+
+ 
+}
+.about img{
+  border: rgb(255, 252, 188) solid 1px;
+  border-radius: 50px;
+  height: 300px;
+  margin-top: 50px;
+  width: 300px;
+  margin-bottom: 50px;
+}
+.box{
+ 
+
+ 
+}
+
+.hidden{
+  display: none;
+}
+.show{
+  display: flex;
+}
+
+.Skills, .Certificados, .aboutBox{
+  width: 100%;
+
+ 
+}
+.aboutContainer{
+  display: flex;
+  text-align: center;
+  padding: 15px;
+  width: 100%;
+  height: 50%;
+  background-color: white;
+flex-direction: column;
+}
+.about p{
+ width: 400px;
+ margin: 0 auto;
+
+}
+a{
+  color: inherit;
+}
+/*Botão */
+.btnAbout{
+  width: 150px;
+  border-radius: 15px;
+  margin-top: 10px;
+  height: 50px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  background-color: #fff7cf;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+}
+.btnAbout:hover {
+  background-color: #ffffff; 
+  transform: scale(1.1);
+}
+.Sub{
+  width: 200px;
+  margin-top: 40px;
+  
+  height: 50px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  padding: 12px 8px;
+  background-color: #ffb300;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  border: none;
+  font-weight: 600;
+}
+
+.Sub:hover {
+  background-color: #ffca4f; 
+  transform: scale(1.1);
+}
+
+/*Formulário de cadastro*/
+
+.bgRose{
+  background: linear-gradient(90deg, #fca0da, #FDBF82);
+}
+
+.transparent{
+  background-color: transparent;
+}
+
+.formStyle{
+  font-family: 'Inconsolata', monospace; ; 
+  width:1000px;
+  height: 700px;
+  position: relative;
+  top: 40px;
+  background-color: white;
+  box-shadow: rgba(202, 202, 202, 0.205) 1px 3px 30px;
+  font-size: 2em;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+}
+.registroStyle{
+  width:40vw;
+  height: 60vh;
+  box-shadow: rgba(202, 202, 202, 0.205) 1px 3px 30px;
+  font-size: 1.8em;
+  margin: auto;
+  margin-top:300px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/*.formStyle:hover{
+  transform: scale(1.1);
+  transition:  all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1); 
+ }*/
+input.forms{
+  background-color: #d7ecff;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.788) 2px 3px 24px;
+  box-shadow: rgba(202, 202, 202, 0.205) 5px 3px 10px;
+  border: none;
+ width: 400px;
+  color: rgb(40, 40, 40);
+  margin-top: 25px;
+  text-align: left;
+  letter-spacing: 1px;
+  padding: 15px;
+  box-sizing: border-box;
+  margin: 20px;
+  height: 60px;
+  font-size: 0.4em;
+}
+#dateContainer{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+input::placeholder{
+  color: rgba(0, 0, 0, 0.699);
+}
+
+#labelDiv{
+  padding-top: 60px;
+}
+#submitButton{
+  border-radius: 20px;
+  width: 250px;
+  margin-top: 25px;
+  text-align: center;
+  padding: 8px 12px;
+  background-color: #6200ff;
+ height: 60px;
+  color: #ffffff;
+  
+  font-size: 0.8em;
+  cursor: pointer; 
+  transition: all 0.3s ease;
+  display: block;
+
+}
+#buttonDiv{
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#submitButton:hover{
+
+      background-color: #87bfff; 
+  }
+
+label{display: block;color: rgb(23, 23, 23);}
+.formStyle select{
+  font-size: 0.6em;
+}
+.formProducts{
+margin-top: 30px;
+}
+.formStyle h1{
+  color: white;
+  margin-top: 20px;
+}
+h4{
+  
+}

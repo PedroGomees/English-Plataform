@@ -1,11 +1,15 @@
 import express from 'express';
 import { engine } from 'express-handlebars';
 import path from 'path';
+import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import routes from './api/index.js';
+import mysql from 'mysql2/promise';
+import db from './config/db.js'
+dotenv.config({path:'./.env'})
 
 const app = express()
-const port = 3000
+const port = 3001
 
 // Obter __dirname em módulos ES
 const __filename = fileURLToPath(import.meta.url);

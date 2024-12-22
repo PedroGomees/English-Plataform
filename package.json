@@ -12,7 +12,12 @@
   "type": "module",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "express-handlebars": "^8.0.1"
+    "express-handlebars": "^8.0.1",
+    "formik": "^2.4.6",
+    "hbs": "^4.2.0",
+    "mysql2": "^3.11.5",
+    "yup": "^1.6.1"
   }
 }
