@@ -79,7 +79,7 @@ body, h1, h2, p, ul, li, a {
     padding: 20px;
     background-color: rgba(255, 255, 255, 0.742);
     overflow-y: auto;
-  height: 70%;
+  height: 90%;
    position: relative;
    top: 40px;
     width: 80%;
@@ -93,7 +93,7 @@ body, h1, h2, p, ul, li, a {
   /*formatando sobre*/
 .about{
   display: flex;
-  height: 120vh;
+  height: 130vh;
   align-items: center;
 
   
@@ -113,11 +113,7 @@ body, h1, h2, p, ul, li, a {
   width: 300px;
   margin-bottom: 50px;
 }
-.box{
- 
 
- 
-}
 
 .hidden{
   display: none;
@@ -135,7 +131,7 @@ body, h1, h2, p, ul, li, a {
   display: flex;
   text-align: center;
   padding: 15px;
-  width: 100%;
+  width: 90%;
   height: 50%;
   background-color: white;
 flex-direction: column;
@@ -197,8 +193,9 @@ a{
 .formStyle{
   font-family: 'Inconsolata', monospace; ; 
   width:1000px;
-  height: 700px;
+  height: 750px;
   position: relative;
+  padding-bottom: 20px;
   top: 40px;
   background-color: white;
   box-shadow: rgba(202, 202, 202, 0.205) 1px 3px 30px;
@@ -289,17 +286,8 @@ input::placeholder{
       background-color: #87bfff; 
   }
 
-label{display: block;color: rgb(23, 23, 23);}
-.formStyle select{
-  font-size: 0.6em;
-}
-.formProducts{
-margin-top: 30px;
-}
+
 .formStyle h1{
   color: white;
   margin-top: 20px;
-}
-h4{
-  
 }

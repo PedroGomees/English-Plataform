@@ -1,21 +1,27 @@
-
-    <form  class="formStyle " action="/registro/save" method="POST">
+ <main class="mainHome">
+    <form  class="formStyle " action="auth/registro" method="POST">
     <h4>Faça seu Cadastro!</h4>
            <div id="dateContainer">
         <div>
             <input class="forms" type="text" name="name" placeholder="Nome e sobrenome" required>
         </div>
         <div>
-            <input class="forms" type="text" name="email" placeholder="Email" required>
+            <input class="forms" type="email" id="email" name="email" placeholder="Digite seu email" required>
+        
         </div>
          <div>
-            <input class="forms" type="text" name="desc" placeholder="Observação" >
+           <input class="forms" type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone"  required>
+        
         </div>
-        <div>
-           
-            <input class="forms" type="date" name="date" id="date" required>
+       
+        <input class="forms" type="password" id="senha" name="senha" placeholder="Digite sua senha" minlength="4" required>
+
         </div>
-        <input id="submitButton" class="registroButton" type="submit" value="Cadastrar">
+         <input class="forms" type="password" id="senhaConfirmada" name="senhaConfirmada" id="senhaConfirmada" placeholder="Confirme sua senha" minlength="4" required>
+         <input id="submitButton" class="registroButton" type="submit" value="Cadastrar">
         </div>
     </form>
-  
+    {{#if message}}
+<h4 class="alerta">{{message}}</h4>
+    {{/if}}
+  </main>

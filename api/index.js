@@ -6,6 +6,10 @@ const router = express.Router()
 router.get('/',(req,res)=>{
     res.render('home',{titulo:"Página inicial"})
 })
+
+import authRouter from './auth.js';
+router.use("/auth",authRouter);
+
 import registroRouter from './registro.js';
 router.use("/registro", registroRouter);
 

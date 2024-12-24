@@ -3,6 +3,7 @@ import { engine } from 'express-handlebars';
 import path from 'path';
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
+import bodyParser from 'body-parser';
 import routes from './api/index.js';
 import mysql from 'mysql2/promise';
 import db from './config/db.js'
@@ -24,6 +25,12 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Estatico
 app.use(express.static("public"));
+
+// Parse
+app.use(express.urlencoded({extended:true}));
+//Garante os dados do form como json
+app.use(express.json());
+
 
 app.use(routes);
 app.listen(port,()=>{
