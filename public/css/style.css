@@ -193,7 +193,7 @@ a{
 .formStyle{
   font-family: 'Inconsolata', monospace; ; 
   width:1000px;
-  height: 750px;
+  height: 800px;
   position: relative;
   padding-bottom: 20px;
   top: 40px;
@@ -290,4 +290,16 @@ input::placeholder{
 .formStyle h1{
   color: white;
   margin-top: 20px;
+}
+h4.error-message {
+  color: #ff4d4d;
+  font-size: 1.2em; 
+  font-weight: bold; 
+  margin-top: 10px; 
+  margin-bottom: 10px;
+  text-align: center; 
+  background-color: #ffe6e6; 
+  border: 1px solid #ffcccc;
+  border-radius: 5px;
+  padding: 10px;
 }
