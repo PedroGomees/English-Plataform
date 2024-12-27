@@ -36,7 +36,7 @@ const authController = {
         }
 
         // Verificando se o email já existe
-       /* try {
+        try {
             const [results] = await db.promise().query('SELECT email FROM usuarios WHERE email = ?', [email]);
 
             if (results.length > 0) {
@@ -44,7 +44,7 @@ const authController = {
                 return res.render('registro', {
                     message: 'Esse email já está em uso'
                 });
-            }*/
+            }
 
             // Criptografando a senha
             let hashedSenha;
@@ -65,11 +65,23 @@ const authController = {
                 message: 'Cadastro realizado com sucesso!'
             });
 
-        }, catch (error) {
+        }catch (error) {
             console.log("Erro ao verificar email ou cadastrar usuário:", error);
             return res.render('registro', { message: 'Erro ao verificar email ou cadastrar usuário' });
         }
-    }
+        db.query('INSERT INTO usuarios SET ?',{nome: nome, email: email, telefone: telefone, senha: hashedSenha},(error,results)=>{
+        if(error){
+            console.log(error)
+
+        }else{
+            console.log(results)
+          res.rende('register',{
+            message: 'Usuário registado'
+          })
+        } 
+        })
+
+    }}
 
 
 export default authController;
