@@ -15,73 +15,47 @@ db.connect((error) => {
     if (error) {
         console.log(error);
     } else {
-        console.log("MYSQL Connected POST");
+        console.log("MYSQL Connected LOGIN");
     }
 });
 
 const authController = {
-    // Função de registro
-    register: async (req, res) => {
-        const telefone = req.body.telefone;
-        const senha = req.body.senha;
-        const nome = req.body.name;
-        const senhaConfirmada = req.body.senhaConfirmada;
-        const email = req.body.email;
-        console.log(req.body);
-        // Função para comparar as senhas
-        if (senha !== senhaConfirmada) {
-            return res.render('registro', {
-                message: "As senhas não são iguais"
-            });
-        }
+    // Função de login
+    login: async (req, res) => {
+        const { email, senha } = req.body;
 
-        // Verificando se o email já existe
         try {
-            const [results] = await db.promise().query('SELECT email FROM usuarios WHERE email = ?', [email]);
+            // Verifica se o email existe no banco
+            const [results] = await db.promise().query('SELECT * FROM usuarios WHERE email = ?', [email]);
 
-            if (results.length > 0) {
-                console.log("Email já existe");
-                return res.render('registro', {
-                    message: 'Esse email já está em uso'
-                });
+            if (results.length === 0) {
+                return res.render('login', { message: 'Email ou senha incorretos' });
             }
 
-            // Criptografando a senha
-            let hashedSenha;
-            try {
-                hashedSenha = await bcrypt.hash(senha, 8);
-                console.log("Senha criptografada:", hashedSenha);
-            } catch (err) {
-                console.log("Erro ao criptografar senha:", err);
-                return res.render('registro', { message: 'Erro ao processar senha' });
+            const usuario = results[0];
+
+            // Compara a senha informada com a senha armazenada no banco (criptografada)
+            const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
+
+            if (!senhaCorreta) {
+                return res.render('login', { message: 'Email ou senha incorretos' });
             }
 
-            // Inserir o usuário no banco de dados
-            await db.promise().query('INSERT INTO usuarios (nome, email, senha, telefone) VALUES (?, ?, ?, ?)', 
-                [nome, email, hashedSenha, telefone]);
+            // Cria uma sessão para o usuário logado
+            req.session.user = {
+                id: usuario.id,
+                nome: usuario.nome,
+                email: usuario.email,
+            };
 
-            console.log("Usuário cadastrado com sucesso!");
-            return res.render('registro', {
-                message: 'Cadastro realizado com sucesso!'
-            });
+            console.log("Usuário logado:", req.session.user);
 
-        }catch (error) {
-            console.log("Erro ao verificar email ou cadastrar usuário:", error);
-            return res.render('registro', { message: 'Erro ao verificar email ou cadastrar usuário' });
+            return res.redirect('/dashboard'); // Redireciona para o dashboard após login
+        } catch (error) {
+            console.error("Erro ao fazer login:", error);
+            return res.render('login', { message: 'Erro ao realizar login' });
         }
-        db.query('INSERT INTO usuarios SET ?',{nome: nome, email: email, telefone: telefone, senha: hashedSenha},(error,results)=>{
-        if(error){
-            console.log(error)
-
-        }else{
-            console.log(results)
-          res.rende('register',{
-            message: 'Usuário registado'
-          })
-        } 
-        })
-
-    }}
-
+    }
+};
 
 export default authController;

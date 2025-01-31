@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import routes from './api/index.js';
 import mysql from 'mysql2/promise';
 import db from './config/db.js'
+import session from "express-session"
 dotenv.config({path:'./.env'})
 
 const app = express()
@@ -16,13 +17,18 @@ const port = 3001
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-//Configuração para handlebars
+
 app.engine('handlebars',engine({extname:'.handlebars',defaultLayout: 'main',
     partialsDir: path.join(__dirname, 'views/partials')
 }));
 app.set('view engine','handlebars');
 app.set('views', path.join(__dirname, 'views'));
 
+//Sessoes
+
+app.use(session({
+    secret:"frangoapassarinho", cookie:{maxAge:30000}
+}))
 // Estatico
 app.use(express.static("public"));
 

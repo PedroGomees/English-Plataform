@@ -1,0 +1,18 @@
+<main class="mainHome">
+    <form class="formStyle" action="/user/login" method="POST">
+        <h4>Faça seu Login!</h4>
+        <div id="dateContainer">
+            <div>
+                <input class="forms" type="email" id="email" name="email" placeholder="Digite seu email" required>
+            </div>
+            <div>
+                <input class="forms" type="password" id="senha" name="senha" placeholder="Digite sua senha" minlength="4" required>
+            </div>
+        </div>
+        <input id="submitButton" class="registroButton" type="submit" value="Entrar">
+        
+        {{#if message}}
+            <h4 class="error-message">{{message}}</h4>
+        {{/if}}
+    </form>
+</main>

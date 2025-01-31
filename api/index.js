@@ -1,6 +1,9 @@
 import express from 'express';
 import path from 'path';
+import session from "express-session"
 const router = express.Router()
+import userController from './controllers/userController.js';
+
 
 //Rota para pagina inicial
 router.get('/',(req,res)=>{
@@ -12,6 +15,15 @@ router.use("/auth",authRouter);
 
 import registroRouter from './registro.js';
 router.use("/registro", registroRouter);
+
+import userRouter from './user.js';
+router.use("/user", userRouter);
+app.get("/session",(req,res)=>{
+    req.session.treinamento = "Formação node.js"
+    req.session.ano = 2019
+    req.session.email = "pedrogomes@gmail.com"
+    })
+        
 
 // Importando rotas
 
