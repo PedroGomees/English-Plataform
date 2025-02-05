@@ -6,9 +6,7 @@ const router = express.Router();
 
 
 
-router.get("/",(req,res)=>{
-    res.render('login',{título:"login"})
-})
+
 router.get('/admin', async (req, res) => {
     try {
         const users = await userController.findAll();
@@ -21,6 +19,6 @@ router.get('/admin', async (req, res) => {
 });
 
 router.get('/admin/user/:id', userController.findOne);
-router.delete('/admin/user/:id', userController.delete);
+router.delete('/admin/delete/:id', userController.delete);
 
 export default router;

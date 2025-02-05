@@ -30,19 +30,28 @@ const userController = {
       }
     },
   
-    async findOne(req, res) {
+    async findAll() {
       try {
-        const { id } = req.params;
-        const [rows] = await db.promise().query('SELECT * FROM usuarios WHERE id = ?', [id]);
-  
-        if (rows.length === 0) {
-          return res.status(404).json({ message: 'Usuário não encontrado' });
+        const [rows] = await db.promise().query('SELECT * FROM usuarios');
+        return rows; // Agora retorna os usuários corretamente
+      } catch (error) {
+        console.error('Erro ao buscar usuários:', error);
+        throw new Error('Erro ao carregar usuários');
+      }
+    },
+    
+    async findOne(email) {
+      try {
+        const [results] = await db.promise().query('SELECT id, email, senha FROM USUARIOS WHERE email = ?', [email]);
+   
+        if (results.length === 0) {
+          return null; // Retorna null se não encontrar o usuário
         }
-  
-        res.json(rows[0]);
+    
+        return results[0]; // Retorna o primeiro usuário encontrado
       } catch (error) {
         console.error('Erro ao buscar usuário:', error);
-        res.status(500).json({ message: 'Erro ao buscar usuário' });
+        return null; // Retorna null em caso de erro
       }
     },
   

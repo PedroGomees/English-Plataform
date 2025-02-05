@@ -15,45 +15,52 @@ db.connect((error) => {
     if (error) {
         console.log(error);
     } else {
-        console.log("MYSQL Connected LOGIN");
+        console.log("MYSQL Connected POST");
     }
 });
 
 const authController = {
-    // Função de login
-    login: async (req, res) => {
-        const { email, senha } = req.body;
+    // Função de registro
+    register: async (req, res) => {
+        const { telefone, senha, senhaConfirmada, name: nome, email } = req.body;
+        console.log(req.body);
+
+        // Verifica se as senhas são iguais
+        if (senha !== senhaConfirmada) {
+            return res.render('registro', {
+                message: "As senhas não são iguais"
+            });
+        }
 
         try {
-            // Verifica se o email existe no banco
-            const [results] = await db.promise().query('SELECT * FROM usuarios WHERE email = ?', [email]);
-
-            if (results.length === 0) {
-                return res.render('login', { message: 'Email ou senha incorretos' });
+            // Verifica se o e-mail já existe no banco
+            const [results] = await db.promise().query('SELECT email FROM usuarios WHERE email = ?', [email]);
+            console.log(results);
+            if (results.length > 0) {
+                console.log("Email já existe");
+                return res.render('registro', {
+                    message: 'Esse email já está em uso'
+                });
             }
 
-            const usuario = results[0];
+            // Criptografa a senha
+            const hashedSenha = await bcrypt.hash(senha, 8);
+            console.log("Senha criptografada:", hashedSenha);
 
-            // Compara a senha informada com a senha armazenada no banco (criptografada)
-            const senhaCorreta = await bcrypt.compare(senha, usuario.senha);
+            // Insere o novo usuário no banco de dados
+            await db.promise().query(
+                'INSERT INTO usuarios (nome, email, senha, telefone) VALUES (?, ?, ?, ?)', 
+                [nome, email, hashedSenha, telefone]
+            );
 
-            if (!senhaCorreta) {
-                return res.render('login', { message: 'Email ou senha incorretos' });
-            }
+            console.log("Usuário cadastrado com sucesso!");
+            return res.render('registro', {
+                message: 'Cadastro realizado com sucesso!'
+            });
 
-            // Cria uma sessão para o usuário logado
-            req.session.user = {
-                id: usuario.id,
-                nome: usuario.nome,
-                email: usuario.email,
-            };
-
-            console.log("Usuário logado:", req.session.user);
-
-            return res.redirect('/dashboard'); // Redireciona para o dashboard após login
         } catch (error) {
-            console.error("Erro ao fazer login:", error);
-            return res.render('login', { message: 'Erro ao realizar login' });
+            console.error("Erro ao registrar usuário:", error);
+            return res.render('registro', { message: 'Erro ao registrar usuário' });
         }
     }
 };

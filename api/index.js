@@ -10,20 +10,38 @@ router.get('/',(req,res)=>{
     res.render('home',{titulo:"Página inicial"})
 })
 
+//Rota de autenticação
 import authRouter from './auth.js';
 router.use("/auth",authRouter);
 
+//Rota de registro
 import registroRouter from './registro.js';
 router.use("/registro", registroRouter);
 
+//Rota de usuarios
 import userRouter from './user.js';
 router.use("/user", userRouter);
-app.get("/session",(req,res)=>{
+router.get("/session",(req,res)=>{
     req.session.treinamento = "Formação node.js"
     req.session.ano = 2019
     req.session.email = "pedrogomes@gmail.com"
+    req.session.user = {
+        username:"Pedro",
+        email:"email@email.com",
+        id:10
+    }
+    res.send("Sessão gerada")
+    })
+    router.get("/leitura",(req,res)=>{
+        res.json({
+            treinamento: req.session.treinamento,
+            ano: req.session.ano
+        })
     })
         
+//Rota de login
+import loginRouter from "./login.js"
+router.use("/login",loginRouter);
 
 // Importando rotas
 
