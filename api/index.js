@@ -3,6 +3,8 @@ import path from 'path';
 import session from "express-session"
 const router = express.Router()
 import userController from './controllers/userController.js';
+import {isAuthenticated} from '../middleware/authMiddleware.js'
+import {isAdmin,isPremium } from '../middleware/roleAuth.js';
 
 
 //Rota para pagina inicial
@@ -19,30 +21,23 @@ import registroRouter from './registro.js';
 router.use("/registro", registroRouter);
 
 //Rota de usuarios
-import userRouter from './user.js';
-router.use("/user", userRouter);
-router.get("/session",(req,res)=>{
-    req.session.treinamento = "Formação node.js"
-    req.session.ano = 2019
-    req.session.email = "pedrogomes@gmail.com"
-    req.session.user = {
-        username:"Pedro",
-        email:"email@email.com",
-        id:10
-    }
-    res.send("Sessão gerada")
-    })
-    router.get("/leitura",(req,res)=>{
-        res.json({
-            treinamento: req.session.treinamento,
-            ano: req.session.ano
-        })
-    })
+import userRouter from './admin.js';
+router.use("/admin", userRouter);
+
+
         
 //Rota de login
 import loginRouter from "./login.js"
 router.use("/login",loginRouter);
 
+//Rota de verificação
+import verifyRouter from "./verify.js"
+router.use("/verify", verifyRouter);
+
+//Rota plataforma
+
+import plataformaRouter from "./plataforma.js"
+router.use("/plataforma",plataformaRouter);
 // Importando rotas
 
 /*import agendamentoRouter from './agendamento.js';

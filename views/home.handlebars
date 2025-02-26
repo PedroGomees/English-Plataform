@@ -1,28 +1,171 @@
+<head>
+    <style>body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  height: 170vh;
+  position: relative;
+}
+header{
+  display: flex;
+}
+header ul{
+  justify-content: center; 
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+}
+header li{
+    margin: 0 15px;
+}
+.flex{
+  display: flex;
+}
+a {
+  text-decoration: none;
+  font-family: 'Arial', sans-serif; 
+  font-size: 18px;
+  color: #333;
+  padding: 10px 15px; 
+  border-radius: 5px; 
+  transition: background-color 0.3s, color 0.3s; 
+}
+a:hover {
+  background-color: #000000; 
+  color: white; }
 
- <main class="mainHome">
-<div class="about">
-    <img >
-   <button class="aboutBtn btnAbout" id="btn1">Sobre mim...</button>
-     <button class="certificadostBtn btnAbout" id="btn2">Certificados</button>
-       <button class="skillsBtn btnAbout" id="btn3">Formação acadêmica</button>
-    <div class="aboutContainer">
-        <div class="aboutBox hidden" id="div1">
-         <h1 >Sobre mim</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo enim cupiditate error obcaecati, 
-        dolor ducimus sunt molestias consequatur eius debitis a
+
+a:active {
+  background-color: #d4e9ff; 
+}
+h2{
+  color: #fcfcfc;
+ margin-bottom: 20px;
+  text-shadow: 2px 5px 5px black;
+  font-size: 2.3em;
+}
+section{
+    position: relative;
+    display: flex;
+   
+    align-items: center;
+   width: 100%;
+    padding: 10px 5vw;
+    
+}
+#sobre-nos{
+  margin-top: 300px;
+  justify-content: center;
+  background-origin: white;
+ 
+}
+#sobre-nos img{
+
+  
+}
+.pBlack{
+  color: black;
+}
+#sobre{
+  display: block;
+  margin-right: 100px;
+  background-color: white;
+  
+}
+.textp{
+  max-width: 400px;
+  word-spacing: 3px;
+  margin-top: 20px;
+    text-shadow: 2px 5px 5px black;
+  color: black;
+  font-weight: 600;
+}
+.wave {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    background-color: ;
+    z-index: -1;
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    
+    width: calc(153% + 1.3px);
+    height: 451px;
+}
+
+.wave .shape-fill {
+    fill: #FFFFFF;
+    
+}
+</style>
+</head>
+<body class="bgRose">
+   <section class="bgWhite" style="height: 100px;">
+
+ <header>
+ 
+    <h1>Logo</h1>
+ 
+  <ul class="flex ">
+    <li><a href="/">Home</a></li>
+     <li><a href="/login">Login</a></li>
+      <li><a href="/Cadastrar">Cadastrar</a></li>
+    <li><a href="/perguntas">Perguntas</a></li>
+    <li><a href="/contato">Contato</a></li>
+     <li><a href="/plataforma">Plataforma</a></li>
+   
+  </ul>
+</header>
+
+<div class="wave">
+    
+<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+    </svg>
+</div>
+</section>
+
+ <main >
+
+   
+    <section id="sobre-nos">
+      <div id="sobre">
+        <h2 class="pBlack">CONHEÇA A PLATAFORMA!</h2>
+        <p class="textp">Bem-vindo à nossa plataforma! Nosso objetivo é oferecer um aprendizado acessível, interativo e eficaz para quem deseja dominar o inglês. Criamos um ambiente online que se adapta ao seu ritmo, com aulas dinâmicas e ferramentas inovadoras.</p>
+        </div><img src="/img/sobre-img.jpg" height="400px">
         
-        
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, dolorem nemo iure, quis unde similique quidem reiciendis, soluta
-         vitae impedit alias eveniet voluptas fuga ad et id ipsam excepturi recusandae. expedita deleniti nihil qui itaque odit odio, velit dolorem.</p>
-         </div>
-         <div class="Skills  hidden" id="div3">
-        <h2>Formação acadêmica</h2>
-         </div>
-         <div class="Certificados hidden"id="div2">
-         <h3>Certificados</h3>
-         </div>
-         </div>
-         
-<a href="/registro"><button class="Sub">Quero acessar o plano</button></a>
+    </section>
+    
+    <section id="funcionalidades">
+        <h2>O que oferecemos?</h2>
+        <ul>
+            <li>📚 Aulas interativas e personalizadas</li>
+            <li>📝 Exercícios práticos para fixação</li>
+            <li>📅 Agendamento de aulas com professores</li>
+            <li>🛠️ Ferramentas de estudo para aprendizado eficiente</li>
+            <li>✅ Correção automática de exercícios</li>
+            <li>🎯 Quizzes divertidos para testar seu conhecimento</li>
+        </ul>
+    </section>
+    
+    <section id="cadastro">
+        <h2>Comece agora!</h2>
+        <p>Cadastre-se gratuitamente e dê o primeiro passo para a fluência no inglês.</p>
+        <a href="cadastro.html" class="btn">Cadastre-se Grátis</a>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Plataforma de Inglês. Todos os direitos reservados.</p>
+    </footer>
+
+</html>
+
 </div>
 </main>
+</body>

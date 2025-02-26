@@ -18,6 +18,7 @@
             margin: 20px auto;
             border-collapse: collapse;
             background-color: white;
+            height: 300px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
         th, td {
@@ -38,7 +39,7 @@
     </style>
 </head>
 <body>
-    <h1>Lista de Usuários</h1>
+ 
     <table border="1" cellspacing="0" cellpadding="5">
         <thead>
             <tr>
@@ -51,11 +52,17 @@
         <tbody>
             {{#each users}}
             <tr>
-                <td>{{this.id}}</td>
+                <td>{{this.id}}
                 <td>{{this.nome}}</td>
                 <td>{{this.email}}</td>
                 <td>{{this.telefone}}</td>
+             <td>   <form action="/admin/delete/{{this.id}}" method="POST" style="display: inline;">
+                            <button type="submit" class="removeButton">Remover</button>
+                        </form></td>
+                </td>
+                  
             </tr>
+            
             {{/each}}
         </tbody>
     </table>

@@ -27,8 +27,14 @@ app.set('views', path.join(__dirname, 'views'));
 //Sessoes
 
 app.use(session({
-    secret:"frangoapassarinho", cookie:{maxAge:30000}
+    secret:"frangoapassarinho", cookie:{maxAge:300000},
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+    
 }))
+
+
 // Estatico
 app.use(express.static("public"));
 

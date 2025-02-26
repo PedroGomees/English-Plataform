@@ -42,8 +42,8 @@ const userController = {
     
     async findOne(email) {
       try {
-        const [results] = await db.promise().query('SELECT id, email, senha FROM USUARIOS WHERE email = ?', [email]);
-   
+        const [results] = await db.promise().query('SELECT id, email, senha,role FROM USUARIOS WHERE email = ?', [email]);
+        console.log[results]
         if (results.length === 0) {
           return null; // Retorna null se não encontrar o usuário
         }
@@ -55,7 +55,7 @@ const userController = {
       }
     },
   
-    async delete(req, res) {
+   /* async delete(req, res) {
       try {
         const { id } = req.params;
         await db.promise().query('DELETE FROM usuarios WHERE id = ?', [id]);
@@ -65,7 +65,7 @@ const userController = {
         console.error('Erro ao deletar usuário:', error);
         res.status(500).json({ message: 'Erro ao deletar usuário' });
       }
-    }
+    }*/
   };
   
   export default userController;

@@ -12,10 +12,12 @@ body, h1, h2, p, ul, li, a {
     font-family: Arial, sans-serif;
     display: flex;
     height: 170vh;
-    background: linear-gradient(90deg, #fca0da, #FDBF82);
-   
-  
+    position: relative;
+    flex-direction: column;
+    overflow-x: hidden;
   }
+  
+  
   
   .layout {
     display: flex;
@@ -29,50 +31,87 @@ body, h1, h2, p, ul, li, a {
    
   }
   
-  /* Aba lateral fixa */
-  .sidebar {
-    width: 100px;
+/* Sidebar */
+
+.sidebar {
+  width: 50px; /* Inicialmente compacta */
   background-color: white;
-    border-radius: 20px;
-    color: #fff;
-    text-shadow: black 1px 0px 4px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-    position: fixed;
-    height: 75%;
-   
-    margin-top: 50px;
-    margin-left: 50px;
+  border-radius: 20px;
+  color: #fff;
+  text-shadow: black 1px 0px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  position: fixed;
+  height: 75%;
+  margin-top: 50px;
+  margin-left: 50px;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+/* Ocultar o texto dos links quando encolhido */
+.sidebar ul {
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+
+.sidebar ul li {
+  width: 50px; /* Mesmo tamanho da sidebar */
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  white-space: nowrap; /* Evita quebra de linha */
+}
+
+.sidebar ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-size: 1em;
+  text-decoration: none;
+  padding: 10px 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s, font-size 0.3s, padding 0.3s ease-in-out;
+  width: 100%;
+  overflow: hidden;
+}
+
+.sidebar:hover {
+  width: 250px; /* Largura expandida */
+}
+
+.sidebar:hover ul li {
+  width: 100%; /* Expande os itens junto com a sidebar */
+}
+
+.sidebar:hover ul li a {
+  justify-content: flex-start;
+  padding: 10px 20px; /* Ajusta padding para expandir corretamente */
+}
+
+/* Ícone visível mesmo quando encolhido */
+.sidebar ul li a::before {
+  content: "📌"; /* Substituir por ícones reais caso use FontAwesome */
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+      width: 40px; /* Sidebar mais estreita em telas menores */
   }
-  
-  .sidebar h1 {
-    margin-bottom: 20px;
-  }
-  
-  .sidebar ul {
-    width: 100%;
-    text-align: center;
-  }
-  
+
   .sidebar ul li {
-    margin: 10px 0;
+      width: 40px;
   }
-  
-  .sidebar ul li a {
-    color: #fff;
-    font-size: 16px;
-    display: block;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+
+  .sidebar:hover {
+      width: 200px;
   }
-  
-  .sidebar ul li a:hover {
-    background-color: #555;
-  }
-  
+}
+
   /* Conteúdo principal*/
   .mainHome {
     margin-left: 180px; 
@@ -181,14 +220,26 @@ a{
 }
 
 /*Formulário de cadastro*/
+/*Cores*/
+
+.rose{
+ background-color: #fca0da;
+}
 
 .bgRose{
   background: linear-gradient(90deg, #fca0da, #FDBF82);
 }
+.bgCinza{
+  background-color: #F8F9FA;
 
+}
+.bgWhite{
+  background-color: #FFFFFF;
+}
 .transparent{
   background-color: transparent;
 }
+
 
 .formStyle{
   font-family: 'Inconsolata', monospace; ; 

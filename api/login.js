@@ -27,10 +27,11 @@ router.post("/authenticate", async (req, res) => {
         if (correct) {
             req.session.user = {
                 id: user.id,
-                email: user.email
+                email: user.email,
+                role: user.role
             };
             console.log(req.session.user); // Retorna a sessão do usuário
-            res.redirect('/')
+            return res.redirect('/plataforma');
         } else {
             return res.redirect("/login"); // Senha incorreta
         }
