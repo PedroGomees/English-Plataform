@@ -14,12 +14,12 @@ const db = mysql.createPool({
 });
 
 const authController = {
-    // Função de registro
+    //FAZER CADASTRO
     register: async (req, res) => {
         const { telefone, senha, senhaConfirmada, name: nome, email } = req.body;
         console.log(req.body);
 
-        // Verifica se as senhas são iguais
+        // VERIFICAÇÃO DE SENHAS.
         if (senha !== senhaConfirmada) {
             return res.render('registro', {
                 message: "As senhas não são iguais"
@@ -27,7 +27,7 @@ const authController = {
         }
 
         try {
-            // Verifica se o e-mail já existe no banco
+            //VER SE O EMAIL JÁEXISTE.
             const [results] = await db.query('SELECT email, verificationToken FROM usuarios WHERE email = ?', [email]);
 
             if (results.length > 0) {
@@ -41,7 +41,7 @@ const authController = {
             const hashedSenha = await bcrypt.hash(senha, 8);
             console.log("Senha criptografada:", hashedSenha);
 
-            // Gera token de verificação
+            // Token pro email ( verificar )
             const verificationToken = crypto.randomBytes(32).toString('hex');
 
             // Insere o novo usuário no banco de dados

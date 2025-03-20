@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafios</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+@font-face {
+    font-family: 'The Seasons';
+    src: url('/fonts/TheSeasons-Regular.woff2') format('woff2');
+}
+
+body {
+    background-color: #3E3F20;
+    color: #E0AA84;
+    font-family: 'The Seasons', serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #AF4D1F;
+    font-size: 2.5rem;
+}
+
+.desafio {
+    background: #760000;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    max-width: 600px;
+    text-align: left;
+}
+
+.desafio h2 {
+    color: #E0AA84;
+}
+
+.desafio p {
+    font-size: 1.1rem;
+    font-family: 'Raleway', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #E0AA84;
+    border-radius: 5px;
+    resize: none;
+}
+
+button {
+    background: #AF4D1F;
+    color: white;
+    font-size: 1.2rem;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button:hover {
+    background: #E0AA84;
+    color: #760000;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .desafio {
+        max-width: 90%;
+    }
+}</style>
+</head>
+<body>
+     {{> sidebarPlataforma}} 
+ 
+    <div class="container">
+        <h1>Desafios Semanais</h1>
+
+        {{#each desafios}}
+        <div class="desafio">
+            <h2>{{titulo}}</h2>
+            <p>{{descricao}}</p>
+            
+            {{#if imagem}}
+                <img src="{{imagem}}" alt="Imagem do Desafio">
+            {{/if}}
+
+            <form action="/desafios/{{id}}/responder" method="POST">
+                <textarea name="resposta" placeholder="Escreva sua resposta..." required></textarea>
+                <button type="submit">Enviar Resposta</button>
+            </form>
+        </div>
+        {{/each}}
+    </div>
+</body>
+</html>

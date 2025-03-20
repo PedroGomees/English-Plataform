@@ -38,6 +38,10 @@ router.use("/verify", verifyRouter);
 
 import plataformaRouter from "./plataforma.js"
 router.use("/plataforma",plataformaRouter);
+
+//Rota do forum
+import forumRouter from "./forum.js"
+router.use("/forum", forumRouter);
 // Importando rotas
 
 /*import agendamentoRouter from './agendamento.js';
