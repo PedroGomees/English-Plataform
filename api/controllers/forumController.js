@@ -47,7 +47,7 @@ export const responderDesafio = (req, res) => {
         return res.status(403).json({ error: 'Apenas alunos podem responder desafios.' });
     }
 
-    const query = 'INSERT INTO respostas (desafio_id, usuario_id, resposta) VALUES (?, ?, ?)';
+    const query = 'INSERT INTO respostas (desafio_id, usuarios_id, resposta) VALUES (?, ?, ?)';
     db.query(query, [id, user.id, resposta], (err) => {
         if (err) {
             return res.status(500).json({ error: 'Erro ao enviar resposta.' });
